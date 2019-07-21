@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WebServerInterface));
             this.webServerFiles = new System.Windows.Forms.FlowLayoutPanel();
             this.startServerButton = new System.Windows.Forms.Button();
             this.stopServerButton = new System.Windows.Forms.Button();
@@ -35,7 +37,13 @@
             this.statusIndicator = new System.Windows.Forms.Label();
             this.webServerPort = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.trayMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.hideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toggleConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.webServerPort)).BeginInit();
+            this.trayMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // webServerFiles
@@ -132,6 +140,46 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Port:";
             // 
+            // trayIcon
+            // 
+            this.trayIcon.BalloonTipText = "Tray Options";
+            this.trayIcon.BalloonTipTitle = "MiniServer";
+            this.trayIcon.ContextMenuStrip = this.trayMenuStrip;
+            this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
+            this.trayIcon.Text = "MiniServer";
+            this.trayIcon.Visible = true;
+            // 
+            // trayMenuStrip
+            // 
+            this.trayMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hideToolStripMenuItem,
+            this.showToolStripMenuItem,
+            this.toggleConsoleToolStripMenuItem});
+            this.trayMenuStrip.Name = "trayMenuStrip";
+            this.trayMenuStrip.Size = new System.Drawing.Size(181, 92);
+            this.trayMenuStrip.Text = "MiniServer Control Strip";
+            // 
+            // hideToolStripMenuItem
+            // 
+            this.hideToolStripMenuItem.Name = "hideToolStripMenuItem";
+            this.hideToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hideToolStripMenuItem.Text = "Hide";
+            this.hideToolStripMenuItem.Click += new System.EventHandler(this.HideToolStripMenuItem_Click);
+            // 
+            // showToolStripMenuItem
+            // 
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showToolStripMenuItem.Text = "Show";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.ShowToolStripMenuItem_Click);
+            // 
+            // toggleConsoleToolStripMenuItem
+            // 
+            this.toggleConsoleToolStripMenuItem.Name = "toggleConsoleToolStripMenuItem";
+            this.toggleConsoleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toggleConsoleToolStripMenuItem.Text = "Toggle Console";
+            this.toggleConsoleToolStripMenuItem.Click += new System.EventHandler(this.ToggleConsoleToolStripMenuItem_Click);
+            // 
             // WebServerInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,6 +194,7 @@
             this.Controls.Add(this.stopServerButton);
             this.Controls.Add(this.startServerButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "WebServerInterface";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -154,6 +203,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WebServerInterface_FormClosing);
             this.Load += new System.EventHandler(this.WebServerInterface_Load);
             ((System.ComponentModel.ISupportInitialize)(this.webServerPort)).EndInit();
+            this.trayMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,6 +218,11 @@
         private System.Windows.Forms.Label statusIndicator;
         private System.Windows.Forms.NumericUpDown webServerPort;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NotifyIcon trayIcon;
+        private System.Windows.Forms.ContextMenuStrip trayMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem hideToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toggleConsoleToolStripMenuItem;
     }
 }
 

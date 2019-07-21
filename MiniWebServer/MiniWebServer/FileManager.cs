@@ -47,7 +47,7 @@ namespace MiniWebServer
 
         private static string CleanWebLocation(string webLocation)
         {
-            // Good tetsing tool DotDotPwn
+            // Good testing tool DotDotPwn
             ///https://tools.kali.org/information-gathering/dotdotpwn
             //Clean special directory chars example: ../ | ./
 

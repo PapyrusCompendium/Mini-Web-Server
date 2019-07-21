@@ -36,6 +36,14 @@ namespace MiniWebServer
             }
         }
 
+        private static bool ValidConsole
+        {
+            get
+            {
+                return (GetConsoleWindow() != IntPtr.Zero);
+            }
+        }
+
         public static void Info(string info)
         {
             if (level.HasFlag(LogLevel.Info))
@@ -62,16 +70,22 @@ namespace MiniWebServer
 
         public static void LogOutput(string output, ConsoleColor colour)
         {
-            if (GetConsoleWindow() != IntPtr.Zero)
-            {
+
+            if (ValidConsole)
                 Console.CursorLeft = 0;
-                Console.WriteLine();
+
+            Console.WriteLine();
+
+            if (ValidConsole)
                 Console.CursorTop -= 1;
 
-                Console.ForegroundColor = colour;
-                Console.WriteLine(output);
+            if (ValidConsole)
+                Console.ForegroundColor = ConsoleColor.Red;
+
+            Console.WriteLine(output);
+
+            if (ValidConsole)
                 Console.ForegroundColor = ConsoleColor.Gray;
-            }
 
             WriteToFile(output);
         }
@@ -88,22 +102,23 @@ namespace MiniWebServer
             {
                 File.AppendAllText($"{Environment.CurrentDirectory}{Path.DirectorySeparatorChar}{logName}.log", data + Environment.NewLine);
             }
-            catch(IOException)
+            catch (IOException)
             {
-                File.AppendAllText($"{Environment.CurrentDirectory}{Path.DirectorySeparatorChar}{logName}.log", data + Environment.NewLine);
-            }
-            finally
-            {
-                if (GetConsoleWindow() != IntPtr.Zero)
-                {
+                if (ValidConsole)
                     Console.CursorLeft = 0;
-                    Console.WriteLine();
+
+                Console.WriteLine();
+
+                if (ValidConsole)
                     Console.CursorTop -= 1;
 
+                if (ValidConsole)
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("[Error] [System Log] Cannot access log file!");
+
+                Console.WriteLine("[Error] [System Log] Cannot access log file!");
+
+                if (ValidConsole)
                     Console.ForegroundColor = ConsoleColor.Gray;
-                }
             }
         }
     }

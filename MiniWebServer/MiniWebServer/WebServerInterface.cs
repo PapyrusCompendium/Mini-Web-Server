@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -67,14 +68,25 @@ namespace MiniWebServer
                 webServer.Stop();
         }
 
-        private void WebServerInterface_Load(object sender, EventArgs e)
-        {
-            webServer = new WebServer(this);
-        }
+        private void WebServerInterface_Load(object sender, EventArgs e) => webServer = new WebServer(this);
+
+        private void HideToolStripMenuItem_Click(object sender, EventArgs e) => this.Hide();
+
+        private void ShowToolStripMenuItem_Click(object sender, EventArgs e) => this.Show();
 
         private void WebServerInterface_FormClosing(object sender, FormClosingEventArgs e)
         {
             webServer.Stop();
+            Environment.Exit(0x00);
+        }
+
+        private void ToggleConsoleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogConsole logConsole = new LogConsole();
+            new Thread(() =>
+            {
+                logConsole.ShowDialog();
+            }).Start();
         }
     }
 }
