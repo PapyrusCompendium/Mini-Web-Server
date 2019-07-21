@@ -88,7 +88,7 @@ namespace MiniWebServer
         private void ToggleConsoleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (logConsole != null)
-                logConsole.Invoke(new MethodInvoker(() => logConsole.Close();
+                logConsole.Invoke(new MethodInvoker(() => logConsole.Close()));
 
             new Thread(() =>
             {
