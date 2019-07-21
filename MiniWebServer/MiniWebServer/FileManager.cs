@@ -15,17 +15,7 @@ namespace MiniWebServer
             if (!File.Exists(filePath))
                 return;
 
-            FileInfo fileInfo = new FileInfo(filePath);
-
-            //Less than 100MB
-            if (fileInfo.Length < 100000000)
-            {
-                byte[] buffer = File.ReadAllBytes(filePath);
-                response.OutputStream.Write(buffer, 0, buffer.Length);
-                return;
-            }
-
-            //If the file is larger than 100MB, read it to the web stream 4096 bytes at a time.
+            //Read the file to the web stream 4096 bytes at a time.
             using (FileStream fileStream = new FileStream(filePath, FileMode.Open))
             {
                 for (int i = 0; i < fileStream.Length;)
@@ -34,11 +24,11 @@ namespace MiniWebServer
                     long readSize = fileStream.Length - i < 4096 ? fileStream.Length - i : 4096;
 
                     byte[] buffer = new byte[readSize];
-                    int read = fileStream.Read(buffer, i, (int)readSize);
-                    response.OutputStream.Write(buffer, i, read);
+                    int read = fileStream.Read(buffer, 0, (int)readSize);
+                    response.OutputStream.Write(buffer, 0, read);
 
                     //Increment the for loop by the bytes read.
-                    i += (int)readSize;
+                    i += (int)read;
                 }
             }
         }

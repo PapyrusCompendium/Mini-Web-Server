@@ -25,10 +25,17 @@ namespace MiniWebServer
                 stream.Write(Buffer, 0, Buffer.Length);
             }
 
-            response.OutputStream.Close();
-            response.OutputStream.Flush();
-            response.Close();
-            response = null;
+            try
+            {
+                response.OutputStream.Close();
+                response.OutputStream.Flush();
+                response.Close();
+                response = null;
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+            }
         }
 
         public static string GetIP(HttpListenerContext context)

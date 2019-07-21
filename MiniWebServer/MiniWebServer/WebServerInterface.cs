@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -44,9 +45,11 @@ namespace MiniWebServer
                 webServerFiles.Controls.Remove(webServerFiles.Controls.Cast<Control>().Single(i => (string)i.Tag == fullPath));
 
             Panel hyperTextDocument = new Panel() { Size = new Size(132, 37), BackColor = Color.FromArgb(25, 25, 28), Tag = fullPath };
+            hyperTextDocument.Click += (s, e) => Process.Start($"http://127.0.0.1/{fileName}");
 
             Label titleLabel = new Label() { Location = new Point(0, 12), BackColor = Color.FromArgb(25, 25, 28), ForeColor = Color.White, Text = fileName };
             titleLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            titleLabel.Click += (s, e) => Process.Start($"http://127.0.0.1/{fileName}");
 
             hyperTextDocument.Controls.Add(titleLabel);
             webServerFiles.Controls.Add(hyperTextDocument);
