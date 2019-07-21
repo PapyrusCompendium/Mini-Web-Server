@@ -177,7 +177,7 @@
             // 
             this.toggleConsoleToolStripMenuItem.Name = "toggleConsoleToolStripMenuItem";
             this.toggleConsoleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.toggleConsoleToolStripMenuItem.Text = "Toggle Console";
+            this.toggleConsoleToolStripMenuItem.Text = "Show Console";
             this.toggleConsoleToolStripMenuItem.Click += new System.EventHandler(this.ToggleConsoleToolStripMenuItem_Click);
             // 
             // WebServerInterface

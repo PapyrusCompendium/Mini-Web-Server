@@ -10,6 +10,7 @@ This server is capable of sending very large amounts of data, unlike many web se
 
 # How to use
 This is a super simplistic tool to use. Simply run the executable it will create a directory in the directory it is located, named "HyperTextDocuments". All documents inside this folder will be accessible through HTTP protocol.  
+You can view real time logs by right clicking the system tray icon and toggling the console window.
 
 # Bugs and issues
 If you encounter and bugs or issues, feel free to open an issue on GitHub. I will address these issues as soon as I can.

@@ -104,7 +104,7 @@ namespace MiniWebServer
         {
             string resourceLocation = FileManager.GetLocalLocation(context.Request.RawUrl);
 
-            if(!File.Exists(resourceLocation))
+            if (!File.Exists(resourceLocation))
             {
                 Log.Info($"404 @ {WebUtils.GetIP(context)} - {context.Request.RawUrl}");
                 WebUtils.EndStream(context.Response, System.Net.HttpStatusCode.NotFound, "Resource not found!");

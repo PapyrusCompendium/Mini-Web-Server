@@ -16,6 +16,7 @@ namespace MiniWebServer
     public partial class WebServerInterface : Form
     {
         private WebServer webServer;
+        private LogConsole logConsole;
 
         public WebServerInterface()
         {
@@ -86,10 +87,15 @@ namespace MiniWebServer
 
         private void ToggleConsoleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LogConsole logConsole = new LogConsole();
+            if (logConsole != null)
+                logConsole.Invoke(new MethodInvoker(() => logConsole.Close();
+
             new Thread(() =>
             {
+                logConsole = new LogConsole();
                 logConsole.ShowDialog();
+                logConsole.Dispose();
+                logConsole = null;
             }).Start();
         }
     }
