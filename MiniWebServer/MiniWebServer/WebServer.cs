@@ -18,7 +18,11 @@ namespace MiniWebServer
 
         private void WebListener_WebServerStarted() => ServerInterface.SetServerStatus(true);
 
-        public void Start() => webListener.Start();
+        public void Start()
+        {
+            webListener.SetPrefix($"http://*:{ServerInterface.GetPortNumber()}/");
+            webListener.Start();
+        }
 
         public void Stop() => webListener.Stop();
 
@@ -28,7 +32,7 @@ namespace MiniWebServer
                 return;
 
             ServerInterface = serverInterface;
-            webListener = new WebListener("http://*:" + ServerInterface.GetPortNumber + "/");
+            webListener = new WebListener($"http://*:{ServerInterface.GetPortNumber()}/");
             webListener.HttpCall += WebListener_HttpCall;
             webListener.WebServerStarted += WebListener_WebServerStarted;
             webListener.WebServerStopped += WebListener_WebServerStopped;

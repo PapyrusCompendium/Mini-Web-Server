@@ -28,12 +28,18 @@ namespace MiniWebServer
             listener.Prefixes.Add(prefix);
         }
 
+        public void SetPrefix(string prefix)
+        {
+            listener.Prefixes.Clear();
+            listener.Prefixes.Add(prefix);
+        }
+
         public void Start()
         {
             listenerThread = new Thread(() =>
             {
                 listener.Start();
-                Log.Info($"Http Listener started - Prefix: {listener.Prefixes.First()}");
+                Log.Info($"Http listener started - Prefix: {listener.Prefixes.First()}.");
 
                 while (listener.IsListening)
                     Listen();
@@ -43,7 +49,7 @@ namespace MiniWebServer
             listenerThread.Start();
 
             if (WebServerStarted.GetInvocationList().Count() > 0)
-                WebServerStarted.Invoke();                 
+                WebServerStarted.Invoke();
         }
 
         public void Listen()
@@ -76,6 +82,7 @@ namespace MiniWebServer
                 listenerThread.Interrupt();
                 listenerThread.Abort();
                 listenerThread = null;
+                Log.Info("Stopped Http Listener.");
             }
             catch (ThreadAbortException e)
             {

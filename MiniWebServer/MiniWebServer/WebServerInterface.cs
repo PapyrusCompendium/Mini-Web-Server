@@ -15,12 +15,16 @@ namespace MiniWebServer
 {
     public partial class WebServerInterface : Form
     {
-        public int GetPortNumber { get { return (int)webServerPort.Value; } }
         private WebServer webServer;
 
         public WebServerInterface()
         {
             InitializeComponent();
+        }
+
+        public int GetPortNumber()
+        {
+            return (int)webServerPort.Value;
         }
 
         public void SetServerStatus(bool online)
