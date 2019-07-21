@@ -6,7 +6,7 @@
 
 This project is intended to be used as a temporary web server, for miscellaneous data transfer.  
 I am not responsible for any the data sent using this tool, or the integrity of that data.  
-This server is capable of sending very large amounts of data, unlike many web servers in C# that are limited it a few GB of data.  
+This server is capable of sending very large amounts of data, unlike many web servers in C# that are limited to a few GB of data.  
 
 [![Tool Screenshot](https://github.com/PapyrusCompendium/Mini-Web-Server/blob/master/ScreenShot.jpg?raw=true)]()
 

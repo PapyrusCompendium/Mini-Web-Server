@@ -40,7 +40,7 @@ namespace MiniWebServer
 
         public static string GetIP(HttpListenerContext context)
         {
-            return context.Request.Headers.AllKeys.Contains("X-Forwarded-For") ? context.Request.Headers["X-Forwarded-For"] : context.Request.UserHostAddress.Split(':')[0];
+            return context.Request.Headers.AllKeys.Contains("X-Forwarded-For") ? context.Request.Headers["X-Forwarded-For"] : context.Request.RemoteEndPoint.ToString().Split(':')[0];
         }
     }
 }
