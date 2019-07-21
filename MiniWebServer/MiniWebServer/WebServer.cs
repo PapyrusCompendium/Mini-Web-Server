@@ -63,9 +63,8 @@ namespace MiniWebServer
             if (!Directory.Exists("HyperTextDocuments"))
             {
                 Log.Error($"{Environment.CurrentDirectory + Path.DirectorySeparatorChar}HyperTextDocuments, does not exist!");
-                Log.Info("Terminating WebServer");
-                Stop();
-                return false;
+                Log.Info("Creating HyperTextDocuments folder...");
+                Directory.CreateDirectory("HyperTextDocuments");
             }
 
             return true;
