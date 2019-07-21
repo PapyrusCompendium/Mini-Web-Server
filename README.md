@@ -6,10 +6,10 @@
 
 This project is intended to be used as a temporary web server, for miscellaneous data transfer.  
 I am not responsible for any the data sent using this tool, or the integrity of that data.  
+This server is capable of sending very large amounts of data, unlike many web servers in C# that are limited it a few GB of data.  
 
 # How to use
-This is a super simplistic tool to use. Simply run the executable it will create a directory in the directory it is located, named "HyperTextDocuments".  
-All documents inside this folder will be accessible through HTTP protocol.  
+This is a super simplistic tool to use. Simply run the executable it will create a directory in the directory it is located, named "HyperTextDocuments". All documents inside this folder will be accessible through HTTP protocol.  
 
 # Bugs and issues
 If you encounter and bugs or issues, feel free to open an issue on GitHub. I will address these issues as soon as I can.

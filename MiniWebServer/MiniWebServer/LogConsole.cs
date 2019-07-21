@@ -22,5 +22,10 @@ namespace MiniWebServer
         {
             Program.RichWriter.TextOut = consoleOut;
         }
+
+        private void LogConsole_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.RichWriter.TextOut = null;
+        }
     }
 }
