@@ -8,6 +8,8 @@ This project is intended to be used as a temporary web server, for miscellaneous
 I am not responsible for any the data sent using this tool, or the integrity of that data.  
 This server is capable of sending very large amounts of data, unlike many web servers in C# that are limited it a few GB of data.  
 
+[![Tool Screenshot](https://github.com/PapyrusCompendium/Mini-Web-Server/blob/master/ScreenShot.jpg?raw=true)]()
+
 # How to use
 This is a super simplistic tool to use. Simply run the executable it will create a directory in the directory it is located, named "HyperTextDocuments". All documents inside this folder will be accessible through HTTP protocol.  
 You can view real time logs by right clicking the system tray icon and toggling the console window.
